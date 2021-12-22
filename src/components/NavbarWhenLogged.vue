@@ -18,7 +18,7 @@
 export default {
     methods: {
     efetuarLogout() {
-      localStorage.removeItem('app_token');
+      this.$store.commit('DESLOGAR_USUARIO');
       this.$router.push({ name: 'Login' });
     }
   },

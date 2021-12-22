@@ -26,7 +26,7 @@ export default {
     this.$http.get('gerentes')
       .then(res => this.gerentes = res.data)
       .catch(err => console.log(err));
-  }
+  },
 }
 </script>
 
