@@ -20,6 +20,10 @@ const mutations = {
     }
 }
 
+const getters = {
+    usuarioEstaLogado: state => Boolean(state.token)
+}
+
 const actions = {
     efetuarLogin({ commit }, usuario) {
         return new Promise((resolve, reject) => {
@@ -42,5 +46,6 @@ const actions = {
 export default new Vuex.Store({
     state: estado,
     mutations,
-    actions
+    actions,
+    getters
 });

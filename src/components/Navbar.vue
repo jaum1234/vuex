@@ -14,6 +14,8 @@
 <script>
 import NavbarWhenLogged from '@/components/NavbarWhenLogged';
 import NavbarWhenLoggedOut from '@/components/NavbarWhenLoggedOut';
+
+import { mapGetters } from 'vuex';
 export default {
   watch: {
   },
@@ -22,9 +24,7 @@ export default {
     NavbarWhenLoggedOut
   },
   computed: {
-    usuarioEstaLogado() {
-      return Boolean(this.$store.state.token);
-    }
+    ...mapGetters(['usuarioEstaLogado'])
   },
 }
 </script>

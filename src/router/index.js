@@ -1,10 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Gerentes from '../views/Gerentes.vue'
-import Home from '../views/Home.vue'
 import Register from '../views/Register.vue';
 import Login from '../views/Login.vue';
-import provedor from '@/provedor';
+import store from '@/store';
 
 Vue.use(VueRouter)
 
@@ -12,7 +11,7 @@ const routes = [
   {
     path: '',
     name: 'home',
-    component: Home
+    component: () => import(/* webpackChunkName: "registrar" */'../views/Home.vue')
   },
   {
     path: '/gerentes',
@@ -42,7 +41,7 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  if (!to.meta.publica && !provedor.state.token) {
+  if (!to.meta.publica && !store.state.token) {
     next({ name: 'Login' });
   }
 
